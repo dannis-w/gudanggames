@@ -1,14 +1,9 @@
 var modalml = document.getElementById("popupml");
-var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close")[0];
-btn.onclick = function() {
+
+function modalpopup(harga){
   modalml.style.display = "block";
+  document.getElementById("harga").innerText=harga;
 }
-span.onclick = function() {
-  modalml.style.display = "none";
-}
-window.onclick = function(event) {
-  if (event.target == modalml) {
-    modalml.style.display = "none";
-  }
+function closepopup(){
+  modalml.style.display ="none";
 }
