@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php include ('config/connection.php'); 
 $sql ="SELECT * FROM harga ORDER BY 'id' DESC";
+$a = "SELECT * FROM harga WHERE harga='harga' && diamond='diamond' ORDER BY 'id'";
 ?>
 <html lang="en">
 	<head>
@@ -13,7 +14,7 @@ $sql ="SELECT * FROM harga ORDER BY 'id' DESC";
 		<title>Gudang Games</title>
 	</head>
 <body>
-<div class="container-fluid bg-dark"> 
+<div class="container-fluid background" id="img1"> 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-lg">
  		<div class="container">
     		<a class="navbar-brand">GudangGames</a>
@@ -81,7 +82,7 @@ $sql ="SELECT * FROM harga ORDER BY 'id' DESC";
   					<div class="card-body">
     					<h5 class="card-title"><?php echo $diamond; ?></h5>
    						<p class="card-text"><?php echo $harga; ?></p>
-    					<button type="button" class="btn btn-outline-danger shadow-lg" onclick="modalpopup('<?php echo $harga; ?>')">
+    					<button type="button" class="btn btn-outline-danger shadow-lg" onclick="modalpopup('<?php echo $harga?>')">
                 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
   								<path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"></path>
 							</svg>
@@ -108,12 +109,20 @@ $sql ="SELECT * FROM harga ORDER BY 'id' DESC";
 </div>
 	<div id="popupml" class="modalml">
   		<div class="modalml-content">
-    		<span onclick="closepopup()">&times;</span>
-    		<p>Some text in the Modal..</p>
-    		<div id="harga"></div>
+    		<span class="close" onclick="closepopup()">&times;</span>
+    		<h1 class="display-7"><center>Top Up Mobile Legend</center></h3>
+    		<div id="harga"><?php 
+    		$b = $connect->query($a);
+						while($data = $b->fetch_array()){
+							$id = $data['id'];
+							$diamond = $data['diamond'];
+							$harga = $data['harga'];
+    		echo $harga;
+    		echo $diamond; }?></div>
   		</div>
 	</div>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 		<script src="config/+java.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </body>
 </html>

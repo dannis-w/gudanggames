@@ -8,6 +8,18 @@
 	color: #FFF;
 	z-index: 1;
 }
+.background{
+	background-image: url('../assets/bg-index.jpg');
+	background-position: center top;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+@media screen and (max-width: 768px) {
+	.background {
+		background-attachment: inherit;
+	}
+}
 .selamat{
 	position: absolute;
 	margin-left: 19%;
